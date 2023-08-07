@@ -160,6 +160,18 @@ contract IterTest is Test {
         }
     }
 
+    function testSingleMapNextThenCollect() public {
+        Iter memory iter = __defaultArr().toIter().map(__double);
+
+        assertEq(iter.next(), 2);
+
+        uint256[] memory res = iter.collect();
+
+        assertEq(res.length, 2);
+        assertEq(res[0], 4);
+        assertEq(res[1], 6);
+    }
+
     // ---------------
     // -- utilities --
     // ---------------
