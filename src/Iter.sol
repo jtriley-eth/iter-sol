@@ -31,7 +31,7 @@ function next(Iter memory self) pure returns (uint256) {
 
 function collect(Iter memory self) pure returns (uint256[] memory res) {
     uint256 i = self.index;
-    uint256 len = self.inner.length;
+    uint256 len = self.inner.length - i;
     res = new uint256[](len);
     while (i < len) {
         res[i] = self.dispatcher.dispatch(self.inner[i]);
